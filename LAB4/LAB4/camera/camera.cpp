@@ -2,7 +2,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 
-deng::Camera::Camera(glm::vec3 position)
+Camera::Camera(glm::vec3 position)
 {
 	this->_position = position;
 
@@ -17,26 +17,26 @@ deng::Camera::Camera(glm::vec3 position)
 	this->_front = glm::normalize(this->_front);
 }
 
-glm::mat4 deng::Camera::GetViewMatrix()
+glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(this->_position,this->_position + this->_front, this->_up);
 }
 
-void deng::Camera::MoveForward(GLfloat distance)
+void Camera::MoveForward(GLfloat distance)
 {
 	this->_position.x += this->_front.x * distance;
 	this->_position.y += this->_front.y * distance;
 	this->_position.z += this->_front.z * distance;
 }
 
-void deng::Camera::MoveBack(GLfloat distance)
+void Camera::MoveBack(GLfloat distance)
 {
 	this->_position.x -= this->_front.x * distance;
 	this->_position.y -= this->_front.y * distance;
 	this->_position.z -= this->_front.z * distance;
 }
 
-void deng::Camera::MoveRight(GLfloat distance)
+void Camera::MoveRight(GLfloat distance)
 {
 	GLfloat yaw = this->_yaw + 90.0f;
 	glm::vec3 camera_right;
@@ -49,7 +49,7 @@ void deng::Camera::MoveRight(GLfloat distance)
 	this->_position.z += camera_right.z * distance;
 }
 
-void deng::Camera::MoveLeft(GLfloat distance)
+void Camera::MoveLeft(GLfloat distance)
 {
 	GLfloat yaw = this->_yaw + 90.0f;
 	glm::vec3 camera_right;
@@ -62,7 +62,7 @@ void deng::Camera::MoveLeft(GLfloat distance)
 	this->_position.z -= camera_right.z * distance;
 }
 
-void deng::Camera::Turn(GLfloat dpitch, GLfloat dyaw)
+void Camera::Turn(GLfloat dpitch, GLfloat dyaw)
 {
 	this->_pitch += dpitch;
 	if (_pitch >= 90)
