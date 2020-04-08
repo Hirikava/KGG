@@ -2,6 +2,15 @@
 #include <glfw3.h>
 #include <iostream>
 
+#include <cmath>
+
+
+float func(float x, float y)
+{
+	return std::cos(x * y);
+}
+
+
 
 int main()
 {
@@ -25,7 +34,6 @@ int main()
 	glfwSwapInterval(1);
 
 	
-
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT); // чистим буфер
